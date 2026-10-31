@@ -1,0 +1,28 @@
+# Core Fetch.ai Framework
+uagents>=0.26.1
+uagents-core>=0.4.12
+
+# Data Validation & Modeling
+pydantic>=2.8.0
+
+# HTTP & Asynchronous Networking
+httpx>=0.28.0
+
+# Environment Management
+python-dotenv>=1.0.0
+
+# Testing Framework
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
+
+# Phase 2: Multi-Agent Orchestration & Workflow State
+langgraph>=1.2.0
+langchain-core>=1.7.0
+
+# Phase 2: Model Context Protocol (MCP)
+mcp>=2.3.0
+
+# Phase 2: Database & Caching
+asyncpg>=0.32.0
+sqlalchemy>=2.1.0
+redis>=8.1.0
