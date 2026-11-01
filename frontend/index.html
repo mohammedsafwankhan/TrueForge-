@@ -360,13 +360,13 @@
       <div class="flex items-center gap-3">
         <!-- Live Endpoints Indicator -->
         <div class="hidden sm:flex items-center gap-3 text-xs font-mono">
-          <a href="http://127.0.0.1:8000/" target="_blank" class="px-2.5 py-1 rounded bg-[#14141c] border border-[#23232e] text-slate-300 hover:text-white transition flex items-center gap-1.5">
+          <a href="/agent-info" target="_blank" class="px-2.5 py-1 rounded bg-[#14141c] border border-[#23232e] text-slate-300 hover:text-white transition flex items-center gap-1.5" title="Agent Node JSON Manifest">
             <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-            <span>API: 8000</span>
+            <span>API Node</span>
           </a>
-          <a href="http://127.0.0.1:8000/health" target="_blank" class="px-2.5 py-1 rounded bg-[#14141c] border border-[#23232e] text-slate-300 hover:text-white transition flex items-center gap-1.5">
+          <a href="/health" target="_blank" class="px-2.5 py-1 rounded bg-[#14141c] border border-[#23232e] text-slate-300 hover:text-white transition flex items-center gap-1.5" title="Subsystem Health Diagnostics">
             <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-            <span>Health</span>
+            <span>Health: OK</span>
           </a>
         </div>
 
@@ -1147,7 +1147,9 @@
   </div>
 
   <script>
-    const API_BASE = 'http://127.0.0.1:8000';
+    const API_BASE = (window.location.protocol === 'file:' || window.location.port === '3000')
+      ? 'http://127.0.0.1:8000'
+      : window.location.origin;
     let currentSessionId = 'session_' + Math.random().toString(36).substring(2, 9);
     let activeCharId = 'hacker';
     let charQuoteTimer = null;

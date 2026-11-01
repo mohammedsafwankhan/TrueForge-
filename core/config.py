@@ -29,7 +29,7 @@ class Settings(BaseModel):
         description="Seed used for deterministic cryptographic address and key generation",
     )
     AGENT_PORT: int = Field(
-        default_factory=lambda: int(os.getenv("AGENT_PORT", "8000")),
+        default_factory=lambda: int(os.getenv("PORT") or os.getenv("AGENT_PORT", "8000")),
         description="Local HTTP listening port for incoming agent messages",
     )
     AGENT_ENDPOINT: str | None = Field(

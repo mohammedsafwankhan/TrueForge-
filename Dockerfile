@@ -49,10 +49,10 @@ ENV PYTHONUNBUFFERED=1 \
     AGENT_NETWORK=testnet \
     AGENT_NAME=stranger_builds_primary_agent
 
-EXPOSE 8000
+EXPOSE 8000 10000
 
 # Container Healthcheck against REST health endpoint
 HEALTHCHECK --interval=30s --timeout=10s --start-period=15s --retries=3 \
     CMD curl -f http://localhost:8000/health || exit 1
 
-CMD ["python", "main.py"]
+CMD ["python", "run_production.py"]
