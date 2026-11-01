@@ -1,0 +1,42 @@
+# ==============================================================================
+# STRANGER BUILDS 2026 - NETLIFY DEPLOYMENT CONFIGURATION
+# ==============================================================================
+
+[build]
+  publish = "frontend"
+  command = "echo 'Static UI ready in frontend/'"
+
+# Security & CORS Headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type, Authorization"
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+
+# API & Agent Proxy Redirects to the Render Backend
+[[redirects]]
+  from = "/api/*"
+  to = "https://trueforge-stranger-builds.onrender.com/api/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/health"
+  to = "https://trueforge-stranger-builds.onrender.com/health"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/agent-info"
+  to = "https://trueforge-stranger-builds.onrender.com/agent-info"
+  status = 200
+  force = true
+
+# SPA Fallback
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
